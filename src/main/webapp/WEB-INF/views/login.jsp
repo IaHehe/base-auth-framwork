@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
-    <title>销管系统</title>
+    <title>系统</title>
     <link rel="shortcut icon" type="image/x-icon" href="${ctx}/images/favicon.ico" media="screen" />
     <link href="${ctx}/js/plugin/superui/content/ui/css/layout.css" rel="stylesheet"/>
     <link href="${ctx}/js/plugin/superui/content/ui/css/login.css" rel="stylesheet"/>
@@ -35,9 +35,7 @@
             </form>
         </div>
 
-        <div class="text-center" 　style="magin-top:30px;">
-            版权所有 © 北京众信易保科技有限公司 美好生活一起包
-        </div>
+        <div class="text-center" 　style="magin-top:30px;">版权所有 © 北漂的我爱丹丹</div>
     </div>
 
 </div>

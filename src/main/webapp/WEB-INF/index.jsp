@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>豆包销售管理系统</title>
+    <title>权限管理系统</title>
     <meta http-equiv="Refresh" content="1; url=${ctx }/login"/>
 <body>
 </body>

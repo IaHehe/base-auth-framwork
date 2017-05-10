@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
@@ -13,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>销管系统</title>
+    <title>系统</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <jsp:include page="static.jsp"/>
     <style type="text/css">
@@ -31,7 +30,7 @@
 <div class="wrapper">
     <header class="main-header">
         <span href="" class="logo">
-            <span class="logo-lg"><b>销管</b>系统</span>
+            <span class="logo-lg"><b>LOVE丹</b>系统</span>
         </span>
 
         <nav class="navbar navbar-static-top" role="navigation">
@@ -74,9 +73,6 @@
 <script src="${ctx}/js/plugin/superui/content/min/js/supershopui.common.js"></script>
 <script type="text/javascript">
     $(function () {
-        //addTabs(({id: '-1', title: '欢迎页', close: false, url: window.basePath + '/userGroup/userGroupListPage'}));
-        //App.fixIframeCotent();
-
         var menus = [];
         $.ajax({
             url: '${ctx}/menu/loadMenu',
