@@ -196,11 +196,7 @@
             <artifactId>shiro-quartz</artifactId>
             <version>1.3.2</version>
         </dependency>
-
-        <!-- shiro end -->
-
     </dependencies>
-  
 
     <build>
         <finalName>doubao-web-sale</finalName>
