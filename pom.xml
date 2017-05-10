@@ -13,6 +13,8 @@
         <mysql.version>5.1.18</mysql.version>
         <kaptcha.version>0.0.9</kaptcha.version>
         <shiro.version>1.2.2</shiro.version>
+        <!-- 工程上下文件路径 -->
+        <context-path>/</context-path>
     </properties>
 
     <dependencies>
@@ -175,11 +177,11 @@
             <version>4.1</version>
         </dependency>
         <!-- 验证码 -->
-        <!--<dependency>
+        <dependency>
             <groupId>com.github.axet</groupId>
             <artifactId>kaptcha</artifactId>
             <version>${kaptcha.version}</version>
-        </dependency>-->
+        </dependency>
         <!-- shiro -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -224,18 +226,14 @@
                     <useSystemClassLoader>true</useSystemClassLoader>
                 </configuration>
             </plugin>
+            <!-- tomcat7插件 mave命令运行:  tomcat7:run -->
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <path>/</path>
+                    <path>${context-path}</path>
                     <uriEncoding>UTF-8</uriEncoding>
-                    <url>http://${m.deploy.path}/manager/text</url>
-                    <server>tomcat7</server>
-                    <username>deploy_user</username>
-                    <password>17doubao.deploy.123</password>
-
                 </configuration>
             </plugin>
             <!--jetty插件 maven命令: jetty:run运行即可 -->
@@ -249,7 +247,7 @@
                     <scanIntervalSeconds>0</scanIntervalSeconds>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>80</port>
+                            <port>8080</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
