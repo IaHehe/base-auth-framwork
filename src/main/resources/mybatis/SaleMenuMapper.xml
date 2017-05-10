@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bm.insurance.cloud.sale.dao.SaleMenuMapper">
+    <resultMap id="BaseResultMap" type="com.bm.insurance.cloud.sale.model.SaleMenu">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="menu_name" property="menuName" jdbcType="VARCHAR"/>
+        <result column="menu_code" property="menuCode" jdbcType="VARCHAR"/>
+        <result column="p_Id" property="pId" jdbcType="BIGINT"/>
+        <result column="levels" property="levels" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="icon" property="icon" jdbcType="VARCHAR"/>
+        <result column="target_type" property="targetType" jdbcType="VARCHAR"/>
+        <result column="types" property="types" jdbcType="TINYINT"/>
+        <result column="sort" property="sort" jdbcType="DECIMAL"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="exp1" property="exp1" jdbcType="VARCHAR"/>
+        <result column="exp2" property="exp2" jdbcType="VARCHAR"/>
+        <result column="exp3" property="exp3" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, menu_name, menu_code, p_Id, levels, url, icon, target_type, types, sort, status, 
+    remark, exp1, exp2, exp3, create_time, update_time
+  </sql>
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.bm.insurance.cloud.sale.model.SaleMenuExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from sale_menu
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from sale_menu
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sale_menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.bm.insurance.cloud.sale.model.SaleMenuExample">
+        delete from sale_menu
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.bm.insurance.cloud.sale.model.SaleMenu">
+    insert into sale_menu (id, menu_name, menu_code, 
+      p_Id, levels, url, icon, 
+      target_type, types, sort, 
+      status, remark, exp1, 
+      exp2, exp3, create_time, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{menuName,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR}, 
+      #{pId,jdbcType=BIGINT}, #{levels,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{targetType,jdbcType=VARCHAR}, #{types,jdbcType=TINYINT}, #{sort,jdbcType=DECIMAL}, 
+      #{status,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, #{exp1,jdbcType=VARCHAR}, 
+      #{exp2,jdbcType=VARCHAR}, #{exp3,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.bm.insurance.cloud.sale.model.SaleMenu">
+        insert into sale_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="menuName != null">
+                menu_name,
+            </if>
+            <if test="menuCode != null">
+                menu_code,
+            </if>
+            <if test="pId != null">
+                p_Id,
+            </if>
+            <if test="levels != null">
+                levels,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="icon != null">
+                icon,
+            </if>
+            <if test="targetType != null">
+                target_type,
+            </if>
+            <if test="types != null">
+                types,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="exp1 != null">
+                exp1,
+            </if>
+            <if test="exp2 != null">
+                exp2,
+            </if>
+            <if test="exp3 != null">
+                exp3,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="menuName != null">
+                #{menuName,jdbcType=VARCHAR},
+            </if>
+            <if test="menuCode != null">
+                #{menuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pId != null">
+                #{pId,jdbcType=BIGINT},
+            </if>
+            <if test="levels != null">
+                #{levels,jdbcType=INTEGER},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="targetType != null">
+                #{targetType,jdbcType=VARCHAR},
+            </if>
+            <if test="types != null">
+                #{types,jdbcType=TINYINT},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=DECIMAL},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="exp1 != null">
+                #{exp1,jdbcType=VARCHAR},
+            </if>
+            <if test="exp2 != null">
+                #{exp2,jdbcType=VARCHAR},
+            </if>
+            <if test="exp3 != null">
+                #{exp3,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.bm.insurance.cloud.sale.model.SaleMenuExample"
+            resultType="java.lang.Integer">
+        select count(*) from sale_menu
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update sale_menu
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=BIGINT},
+            </if>
+            <if test="record.menuName != null">
+                menu_name = #{record.menuName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.menuCode != null">
+                menu_code = #{record.menuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.pId != null">
+                p_Id = #{record.pId,jdbcType=BIGINT},
+            </if>
+            <if test="record.levels != null">
+                levels = #{record.levels,jdbcType=INTEGER},
+            </if>
+            <if test="record.url != null">
+                url = #{record.url,jdbcType=VARCHAR},
+            </if>
+            <if test="record.icon != null">
+                icon = #{record.icon,jdbcType=VARCHAR},
+            </if>
+            <if test="record.targetType != null">
+                target_type = #{record.targetType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.types != null">
+                types = #{record.types,jdbcType=TINYINT},
+            </if>
+            <if test="record.sort != null">
+                sort = #{record.sort,jdbcType=DECIMAL},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=TINYINT},
+            </if>
+            <if test="record.remark != null">
+                remark = #{record.remark,jdbcType=VARCHAR},
+            </if>
+            <if test="record.exp1 != null">
+                exp1 = #{record.exp1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.exp2 != null">
+                exp2 = #{record.exp2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.exp3 != null">
+                exp3 = #{record.exp3,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.updateTime != null">
+                update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update sale_menu
+        set id = #{record.id,jdbcType=BIGINT},
+        menu_name = #{record.menuName,jdbcType=VARCHAR},
+        menu_code = #{record.menuCode,jdbcType=VARCHAR},
+        p_Id = #{record.pId,jdbcType=BIGINT},
+        levels = #{record.levels,jdbcType=INTEGER},
+        url = #{record.url,jdbcType=VARCHAR},
+        icon = #{record.icon,jdbcType=VARCHAR},
+        target_type = #{record.targetType,jdbcType=VARCHAR},
+        types = #{record.types,jdbcType=TINYINT},
+        sort = #{record.sort,jdbcType=DECIMAL},
+        status = #{record.status,jdbcType=TINYINT},
+        remark = #{record.remark,jdbcType=VARCHAR},
+        exp1 = #{record.exp1,jdbcType=VARCHAR},
+        exp2 = #{record.exp2,jdbcType=VARCHAR},
+        exp3 = #{record.exp3,jdbcType=VARCHAR},
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bm.insurance.cloud.sale.model.SaleMenu">
+        update sale_menu
+        <set>
+            <if test="menuName != null">
+                menu_name = #{menuName,jdbcType=VARCHAR},
+            </if>
+            <if test="menuCode != null">
+                menu_code = #{menuCode,jdbcType=VARCHAR},
+            </if>
+            <if test="pId != null">
+                p_Id = #{pId,jdbcType=BIGINT},
+            </if>
+            <if test="levels != null">
+                levels = #{levels,jdbcType=INTEGER},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="targetType != null">
+                target_type = #{targetType,jdbcType=VARCHAR},
+            </if>
+            <if test="types != null">
+                types = #{types,jdbcType=TINYINT},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=DECIMAL},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="exp1 != null">
+                exp1 = #{exp1,jdbcType=VARCHAR},
+            </if>
+            <if test="exp2 != null">
+                exp2 = #{exp2,jdbcType=VARCHAR},
+            </if>
+            <if test="exp3 != null">
+                exp3 = #{exp3,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bm.insurance.cloud.sale.model.SaleMenu">
+    update sale_menu
+    set menu_name = #{menuName,jdbcType=VARCHAR},
+      menu_code = #{menuCode,jdbcType=VARCHAR},
+      p_Id = #{pId,jdbcType=BIGINT},
+      levels = #{levels,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      target_type = #{targetType,jdbcType=VARCHAR},
+      types = #{types,jdbcType=TINYINT},
+      sort = #{sort,jdbcType=DECIMAL},
+      status = #{status,jdbcType=TINYINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      exp1 = #{exp1,jdbcType=VARCHAR},
+      exp2 = #{exp2,jdbcType=VARCHAR},
+      exp3 = #{exp3,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="loadTreeGrid" resultType="com.bm.insurance.cloud.sale.dto.MenuHelpDto">
+        select
+          id, menu_name as menuName,menu_code as menuCode,p_id as pId,
+          (case when p_id is null then null else p_id end) _parentId,
+          levels,url,icon,target_type as targetType,types,sort,
+          status,remark,exp1,exp2,exp3,create_time as createTime,update_time as update_time
+        from sale_menu sm  order by sort asc
+
+    </select>
+</mapper>

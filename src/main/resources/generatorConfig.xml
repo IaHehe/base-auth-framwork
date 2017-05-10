@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- mybatis生成配置 -->
+<!-- 最后一行table元素中修改自己的要生成的表名及实体名称 -->
+<!--用法: 选择pom.xml文件，击右键先择Run AS——Maven Build… ——在Goals框中输入：mybatis-generator:generate——Run就好了,在工程上刷新 -->
+
+<generatorConfiguration>
+	<context id="call" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 关闭自动生成的注释 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!-- 数据库连接信息 -->
+		<!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://10.3.2.123/20170220?characterEncoding=utf8&amp;allowMultiQueries=true"
+			userId="root" password="banma123">
+		</jdbcConnection>-->
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost/sales?characterEncoding=utf8&amp;allowMultiQueries=true"
+                        userId="root" password="123456">
+        </jdbcConnection>
+
+		<!-- model实体类 -->
+		<javaModelGenerator targetPackage="com.bm.insurance.cloud.sale.model"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- sql xml -->
+		<sqlMapGenerator targetPackage="mybatis"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- dao -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.bm.insurance.cloud.sale.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- 表名, 生成的实体名 -->
+        <table tableName="sale_user_data_auth" domainObjectName="SaleUserDataAuth"></table>
+
+        <!--
+        <table tableName="sale_user_role" domainObjectName="SaleUserRole"></table>
+        <table tableName="sale_user" domainObjectName="SaleUser"></table>
+        <table tableName="sale_department" domainObjectName="SaleDepartment"></table>-->
+		<!--<table tableName="sale_dictionary" domainObjectName="SaleDictionary"></table>
+		<table tableName="sale_group" domainObjectName="SaleGroup"></table>
+		<table tableName="sale_log" domainObjectName="SaleLog"></table>
+		<table tableName="sale_role" domainObjectName="SaleRole"></table>
+		<table tableName="sale_menu_operate" domainObjectName="SaleMenuOperate"></table>
+		<table tableName="sale_operate" domainObjectName="SaleOperate"></table>
+		<table tableName="sale_role_group" domainObjectName="SaleRoleGroup"></table>
+		<table tableName="sale_role_menu" domainObjectName="SaleRoleMenu"></table>
+		<table tableName="sale_user" domainObjectName="SaleUser"></table>
+		<table tableName="sale_user_group" domainObjectName="SaleUserGroup"></table>
+		<table tableName="sale_user_menu" domainObjectName="SaleUserMenu"></table>
+		<table tableName="sale_menu" domainObjectName="SaleMenu"></table>
+		<table tableName="sale_user_role" domainObjectName="SaleUserRole"></table>
+		 <table tableName="sale_user_group" domainObjectName="SaleUserGroup"></table>
+		-->
+
+	</context>
+</generatorConfiguration>
+
