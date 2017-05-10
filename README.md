@@ -16,6 +16,6 @@
  * 数据源用maven的profile，默认是src/main/resources-env/dev 环境中的db.properties配置
    
 ## 启动
- * maven命令: tomcat7:run
- * maven命令: jetty:run  (注：jetty启动有异常但不影响)
+ * tomact插件maven命令: tomcat7:run
+ * jetty插件maven命令: jetty:run  (注：jetty启动有异常但不影响)
  * 访问: http://localhost:8080  
