@@ -10,12 +10,12 @@
  * 按钮权限用shrio标签，格式(菜单的编码:按钮)
 
 ## PageHelper分页
-  Page<SaleUser> page = PageHelper.startPage(pageDto.getPage(), pageDto.getRows());
+ *	Page<SaleUser> page = PageHelper.startPage(pageDto.getPage(), pageDto.getRows());
   
 ## 表在src/test/resources中
-   * 数据源用maven的profile，默认是src/main/resources-env/dev 环境中的db.properties配置
+ * 数据源用maven的profile，默认是src/main/resources-env/dev 环境中的db.properties配置
    
 ## 启动
-   * maven命令: tomcat7:run
-   * maven命令: jetty:run  (注：jetty启动有异常但不影响)
-   * 访问: http://localhost:8080  
+ * maven命令: tomcat7:run
+ * maven命令: jetty:run  (注：jetty启动有异常但不影响)
+ * 访问: http://localhost:8080  
