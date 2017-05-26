@@ -17,5 +17,5 @@
    
 ## 启动
  * tomact插件maven命令: tomcat7:run
- * jetty插件maven命令: jetty:run  (注：jetty启动有异常但不影响)
+ * jetty插件maven命令: jetty:run  (注：jetty启动有异常但不影响) (需要　src/test/resources/webdefault.xml)
  * 访问: http://localhost:8080  
